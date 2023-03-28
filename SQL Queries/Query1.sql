@@ -1,1 +1,3 @@
-This is a test
+SELECT id
+    , (Value * -1)
+FROM Table1;
