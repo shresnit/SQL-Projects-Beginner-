@@ -20,6 +20,7 @@
   
   
   
+
 **Question 2** How many days has each customer visited the restaurant?
 
 	SELECT sales.customer_id AS "Customer"
