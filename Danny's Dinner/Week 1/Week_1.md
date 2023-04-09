@@ -1,3 +1,6 @@
+#Danny's Dinner
+#Week 1 | Challenge
+
 **Question 1** What is the total amount each customer spent at the resturant?
 
 	  SELECT sales.customer_id AS "Customer ID"
