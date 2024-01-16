@@ -176,6 +176,53 @@ Return the list of drivers and their fastest lap speed in Monaco in 2021, as wel
 <br>
 
 **Question 6**  
+Return the list of drivers, their fastest lap speed in Monaco in 2021, as well as how many times they have won in Monaco in total
+	SELECT d.driverid, 
+	forename, 
+	surname, 
+	MAX(fastestlapspeed) as Fastest_Lap_Speed_in_Monaco_2021,
+	SUM(total_wins)
+	FROM drivers as d
+	INNER JOIN results as r ON d.driverid = r.driverid
+	INNER JOIN races as races ON r.raceid = races.raceid
+	INNER JOIN (SELECT driverid, SUM(wins) as total_wins, name
+				FROM driver_standings as ds
+				INNER JOIN races as r on r.raceid = ds.raceid
+				WHERE name LIKE '%Monaco%'
+	GROUP BY driverid, name) as wins ON d.driverid = wins.driverid
+	WHERE fastestlapspeed IS NOT NULL
+	AND races.year = 2021
+	AND races.name LIKE '%Monaco%'
+	GROUP BY d.driverid, forename, surname;
+
+ **Result**
+ |DRIVERID|FORENAME |SURNAME   |FASTEST_LAP_SPEED_IN_MONACO_2021|SUM(TOTAL_WINS)|
+|--------|---------|----------|--------------------------------|---------------|
+|832     |Carlos   |Sainz     |160.989                         |0              |
+|830     |Max      |Verstappen|160.929                         |7              |
+|846     |Lando    |Norris    |160.883                         |0              |
+|815     |Sergio   |Pérez     |161.138                         |1              |
+|20      |Sebastian|Vettel    |159.503                         |16             |
+|842     |Pierre   |Gasly     |159.3                           |0              |
+|1       |Lewis    |Hamilton  |164.769                         |22             |
+|840     |Lance    |Stroll    |160.875                         |0              |
+|839     |Esteban  |Ocon      |159.503                         |0              |
+|841     |Antonio  |Giovinazzi|159.472                         |0              |
+|817     |Daniel   |Ricciardo |161.082                         |2              |
+|849     |Nicholas |Latifi    |158.961                         |0              |
+|852     |Yuki     |Tsunoda   |162.259                         |0              |
+|853     |Nikita   |Mazepin   |156.287                         |0              |
+|854     |Mick     |Schumacher|157.189                         |0              |
+|822     |Valtteri |Bottas    |158.682                         |3              |
+|8       |Kimi     |Räikkönen |160.237                         |7              |
+|847     |George   |Russell   |159.033                         |0              |
+|4       |Fernando |Alonso    |160.12                          |13             |
+
+<br>
+<br>
+
+
+
 
 	
 
