@@ -27,6 +27,7 @@ Return the list of drivers Driver First Name LAst Name and limit to first 10 rec
 
 <br>
 <br>
+<br>
     
 **Question 2**  
 Return the list of drivers and their fastest lap speed. Limit to 10 records.
@@ -60,8 +61,9 @@ Return the list of drivers and their fastest lap speed. Limit to 10 records.
 
 <br>
 <br>
+<br>
 
-**Question 3**
+**Question 3**  
 Return the list of drivers and their fastest lap speed ever, Limit to 10
 
 	SELECT d.driverid,
@@ -89,6 +91,7 @@ Return the list of drivers and their fastest lap speed ever, Limit to 10
 |18      |Jenson    |Button    |252.262               |
 |13      |Felipe    |Massa     |251.441               |
 
+<br>
 <br>
 <br>
 
@@ -130,6 +133,7 @@ Return the list of drivers and their fastest lap speed in Monaco in 2021
 |815     |Sergio   |Pérez     |161.138                         |
 |4       |Fernando |Alonso    |160.12                          |
 
+<br>
 <br>
 <br>
 
@@ -174,9 +178,11 @@ Return the list of drivers and their fastest lap speed in Monaco in 2021, as wel
 
 <br>
 <br>
+<br>
 
 **Question 6**  
 Return the list of drivers, their fastest lap speed in Monaco in 2021, as well as how many times they have won in Monaco in total
+
 	SELECT d.driverid, 
 	forename, 
 	surname, 
@@ -218,6 +224,7 @@ Return the list of drivers, their fastest lap speed in Monaco in 2021, as well a
 |847     |George   |Russell   |159.033                         |0              |
 |4       |Fernando |Alonso    |160.12                          |13             |
 
+<br>
 <br>
 <br>
 
