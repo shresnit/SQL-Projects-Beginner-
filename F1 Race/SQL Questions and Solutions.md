@@ -25,7 +25,8 @@ Return the list of drivers Driver First Name LAst Name and limit to first 10 rec
 |849     |Nicholas  |Latifi    |
 |848     |Alexander |Albon     |
 
-
+<br>
+<br>
     
 **Question 2**  
 Return the list of drivers and their fastest lap speed. Limit to 10 records.
