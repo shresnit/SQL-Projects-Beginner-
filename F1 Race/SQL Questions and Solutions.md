@@ -60,8 +60,9 @@ Return the list of drivers and their fastest lap speed. Limit to 10 records.
 
 <br>
 <br>
-**Question 3**  
-Return the list of drivers and their fastest lap speed ever
+
+**Question 3**
+Return the list of drivers and their fastest lap speed ever, Limit to 10
 
 	SELECT d.driverid,
 	forename as First_Name,
@@ -87,98 +88,93 @@ Return the list of drivers and their fastest lap speed ever
 |14      |David     |Coulthard |251.599               |
 |18      |Jenson    |Button    |252.262               |
 |13      |Felipe    |Massa     |251.441               |
-|10      |Timo      |Glock     |243.201               |
-|22      |Rubens    |Barrichello|257.32                |
-|20      |Sebastian |Vettel    |252.77                |
-|17      |Mark      |Webber    |251.459               |
-|6       |Kazuki    |Nakajima  |242.565               |
-|7       |Sébastien |Bourdais  |233.646               |
-|25      |Alexander |Wurz      |245.35                |
-|30      |Michael   |Schumacher|256.324               |
-|31      |Juan      |Pablo Montoya|254.861               |
-|32      |Christian |Klien     |249.961               |
-|27      |Christijan|Albers    |245.448               |
-|37      |Pedro     |de la Rosa|249.155               |
-|36      |Franck    |Montagny  |212.323               |
-|39      |Narain    |Karthikeyan|244.929               |
-|47      |Zsolt     |Baumgartner|241.497               |
-|154     |Romain    |Grosjean  |245.972               |
-|69      |Luca      |Badoer    |229.633               |
-|814     |Paul      |di Resta  |236.841               |
-|813     |Pastor    |Maldonado |239.762               |
-|823     |Giedo     |van der Garde|235.214               |
-|834     |Alexander |Rossi     |206.029               |
-|838     |Stoffel   |Vandoorne |246.79                |
-|812     |Karun     |Chandhok  |214.656               |
-|822     |Valtteri  |Bottas    |251.69                |
-|849     |Nicholas  |Latifi    |245.353               |
-|854     |Mick      |Schumacher|244.493               |
-|16      |Adrian    |Sutil     |246.106               |
-|23      |Ralf      |Schumacher|251.032               |
-|24      |Vitantonio|Liuzzi    |246.033               |
-|28      |Markus    |Winkelhock|180.309               |
-|44      |Olivier   |Panis     |233.04                |
-|41      |Ricardo   |Zonta     |250.027               |
-|817     |Daniel    |Ricciardo |250.174               |
-|816     |Jérôme    |d'Ambrosio|235.177               |
-|824     |Jules     |Bianchi   |232.767               |
-|825     |Kevin     |Magnussen |248.959               |
-|845     |Sergey    |Sirotkin  |246.568               |
-|843     |Brendon   |Hartley   |239.685               |
-|853     |Nikita    |Mazepin   |239.155               |
-|844     |Charles   |Leclerc   |251.235               |
-|837     |Rio       |Haryanto  |221.398               |
-|847     |George    |Russell   |247.033               |
-|15      |Jarno     |Trulli    |251.775               |
-|21      |Giancarlo |Fisichella|252.519               |
-|11      |Takuma    |Sato      |252.296               |
-|29      |Sakon     |Yamamoto  |243.978               |
-|33      |Tiago     |Monteiro  |245.9                 |
-|34      |Yuji      |Ide       |203.663               |
-|35      |Jacques   |Villeneuve|248.591               |
-|42      |Antônio   |Pizzonia  |253.566               |
-|38      |Robert    |Doornbos  |244.794               |
-|40      |Patrick   |Friesacher|213.987               |
-|43      |Cristiano |da Matta  |229.145               |
-|67      |Sébastien |Buemi     |244.705               |
-|818     |Jean-Éric |Vergne    |234.005               |
-|832     |Carlos    |Sainz     |249.671               |
-|848     |Alexander |Albon     |250.165               |
-|829     |Will      |Stevens   |228.927               |
-|831     |Felipe    |Nasr      |235.24                |
-|810     |Lucas     |di Grassi |236.526               |
-|855     |Guanyu    |Zhou      |241.484               |
-|19      |Anthony   |Davidson  |245.016               |
-|26      |Scott     |Speed     |245.079               |
-|45      |Giorgio   |Pantano   |248.091               |
-|46      |Gianmaria |Bruni     |241.456               |
-|153     |Jaime     |Alguersuari|243.995              |
-|807     |Nico      |Hülkenberg|249.337               |
-|808     |Vitaly    |Petrov    |246.382               |
-|811     |Bruno     |Senna     |240                   |
-|819     |Charles   |Pic       |235.328               |
-|821     |Esteban   |Gutiérrez |239.457               |
-|820     |Max       |Chilton   |233.037               |
-|828     |Marcus    |Ericsson  |246.024               |
-|839     |Esteban   |Ocon      |247.555               |
-|842     |Pierre    |Gasly     |248.611               |
-|846     |Lando     |Norris    |248.141               |
-|841     |Antonio   |Giovinazzi|246.793               |
-|840     |Lance     |Stroll    |248.576               |
-|856     |Nyck      |de Vries  |240.75                |
-|836     |Pascal    |Wehrlein  |240.965               |
-|833     |Roberto   |Merhi     |228.393               |
-|826     |Daniil    |Kvyat     |246.863               |
-|851     |Jack      |Aitken    |222.24                |
-|850     |Pietro    |Fittipaldi|220.892               |
-|815     |Sergio    |Pérez     |248.953               |
-|835     |Jolyon    |Palmer    |243.198               |
-|12      |Nelson    |Piquet Jr.|229.38                |
-|155     |Kamui     |Kobayashi |234.239               |
-|830     |Max       |Verstappen|250.83                |
-|48      |Marc      |Gené      |230.096               |
-|852     |Yuki      |Tsunoda   |240.269               |
 
 <br>
 <br>
+
+**Question 4**
+Return the list of drivers and their fastest lap speed in Monaco in 2021
+
+	SELECT d.driverid, 
+	forename, 
+	surname, 
+	MAX(fastestlapspeed) as Fastest_Lap_Speed_in_Monaco_2021 
+	FROM drivers as d
+	INNER JOIN results as r ON d.driverid = r.driverid
+	INNER JOIN races as races ON r.raceid = races.raceid
+	WHERE fastestlapspeed IS NOT NULL
+	AND races.year = 2021
+	AND races.name LIKE '%Monaco%'
+	GROUP BY d.driverid, forename, surname;
+
+ **Result**
+ |DRIVERID|FORENAME |SURNAME   |FASTEST_LAP_SPEED_IN_MONACO_2021|
+|--------|---------|----------|--------------------------------|
+|1       |Lewis    |Hamilton  |164.769                         |
+|853     |Nikita   |Mazepin   |156.287                         |
+|852     |Yuki     |Tsunoda   |162.259                         |
+|849     |Nicholas |Latifi    |158.961                         |
+|847     |George   |Russell   |159.033                         |
+|841     |Antonio  |Giovinazzi|159.472                         |
+|839     |Esteban  |Ocon      |159.503                         |
+|832     |Carlos   |Sainz     |160.989                         |
+|830     |Max      |Verstappen|160.929                         |
+|822     |Valtteri |Bottas    |158.682                         |
+|817     |Daniel   |Ricciardo |161.082                         |
+|846     |Lando    |Norris    |160.883                         |
+|840     |Lance    |Stroll    |160.875                         |
+|20      |Sebastian|Vettel    |159.503                         |
+|8       |Kimi     |Räikkönen |160.237                         |
+|854     |Mick     |Schumacher|157.189                         |
+|842     |Pierre   |Gasly     |159.3                           |
+|815     |Sergio   |Pérez     |161.138                         |
+|4       |Fernando |Alonso    |160.12                          |
+
+<br>
+<br>
+
+**Question 5**  Return the list of drivers and their fastest lap speed in Monaco in 2021, as well as the fastest lap speed of all time
+
+	SELECT d.driverid, 
+	forename, 
+	surname, 
+	MAX(fastestlapspeed) as Fastest_Lap_Speed_in_Monaco_2021,
+	(SELECT MAX(fastestlapspeed) FROM results) as All_Time_Fastest_LS
+	FROM drivers as d
+	INNER JOIN results as r ON d.driverid = r.driverid
+	INNER JOIN races as races ON r.raceid = races.raceid
+	WHERE fastestlapspeed IS NOT NULL
+	AND races.year = 2021
+	AND races.name LIKE '%Monaco%'
+	GROUP BY d.driverid, forename, surname;
+
+ **Results**
+ |DRIVERID|FORENAME |SURNAME   |FASTEST_LAP_SPEED_IN_MONACO_2021|ALL_TIME_FASTEST_LS|
+|--------|---------|----------|--------------------------------|-------------------|
+|1       |Lewis    |Hamilton  |164.769                         |257.32             |
+|853     |Nikita   |Mazepin   |156.287                         |257.32             |
+|852     |Yuki     |Tsunoda   |162.259                         |257.32             |
+|849     |Nicholas |Latifi    |158.961                         |257.32             |
+|847     |George   |Russell   |159.033                         |257.32             |
+|841     |Antonio  |Giovinazzi|159.472                         |257.32             |
+|839     |Esteban  |Ocon      |159.503                         |257.32             |
+|832     |Carlos   |Sainz     |160.989                         |257.32             |
+|830     |Max      |Verstappen|160.929                         |257.32             |
+|822     |Valtteri |Bottas    |158.682                         |257.32             |
+|817     |Daniel   |Ricciardo |161.082                         |257.32             |
+|846     |Lando    |Norris    |160.883                         |257.32             |
+|840     |Lance    |Stroll    |160.875                         |257.32             |
+|20      |Sebastian|Vettel    |159.503                         |257.32             |
+|8       |Kimi     |Räikkönen |160.237                         |257.32             |
+|854     |Mick     |Schumacher|157.189                         |257.32             |
+|842     |Pierre   |Gasly     |159.3                           |257.32             |
+|815     |Sergio   |Pérez     |161.138                         |257.32             |
+|4       |Fernando |Alonso    |160.12                          |257.32             |
+
+
+
+**Question 6**  
+
+	
+
 
