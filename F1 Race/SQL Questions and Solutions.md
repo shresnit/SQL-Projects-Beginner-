@@ -1,19 +1,26 @@
-#F1 Race SQL Challenge
+**F1 Race SQL Challenge**
 
-#Week 1 | Challenge
+**Question 1**
+Return the list of drivers Driver First Name LAst Name and limit to first 10 records
 
-**Question 1** What is the total amount each customer spent at the resturant?
-
-	  SELECT sales.customer_id AS "Customer ID"
-		,sum(menu.price) AS "Total Amount"
-	  FROM sales
-		INNER JOIN menu ON sales.product_id = menu.product_id
-	  GROUP BY customer_id;
+		SELECT DRIVERID,
+		FORENAME AS First_Name,
+		SURNAME AS Last_Name
+		FROM DRIVERS
+		LIMIT 10;
   
   **Result**
   
-  |Customer ID|Total Amount|
-  |---|---|
-  |A|76|
-  |B|74|
-  |C|36|
+|DRIVERID|FIRST_NAME|LAST_NAME |
+|--------|----------|----------|
+|1       |Lewis     |Hamilton  |
+|856     |Nyck      |de Vries  |
+|855     |Guanyu    |Zhou      |
+|854     |Mick      |Schumacher|
+|853     |Nikita    |Mazepin   |
+|852     |Yuki      |Tsunoda   |
+|851     |Jack      |Aitken    |
+|850     |Pietro    |Fittipaldi|
+|849     |Nicholas  |Latifi    |
+|848     |Alexander |Albon     |
+
