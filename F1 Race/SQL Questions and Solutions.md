@@ -1,4 +1,5 @@
-**F1 Race SQL Challenge**
+**F1 Race SQL Challenge**  
+Download the table and schema to follow the challenge
 
 **Question 1**  
 Return the list of drivers Driver First Name LAst Name and limit to first 10 records
