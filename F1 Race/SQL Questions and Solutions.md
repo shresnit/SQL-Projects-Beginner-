@@ -3,11 +3,11 @@
 **Question 1**  
 Return the list of drivers Driver First Name LAst Name and limit to first 10 records
 
-		SELECT DRIVERID,
-		FORENAME AS First_Name,
-		SURNAME AS Last_Name
-		FROM DRIVERS
-		LIMIT 10;
+	SELECT DRIVERID,
+	FORENAME AS First_Name,
+	SURNAME AS Last_Name
+	FROM DRIVERS
+	LIMIT 10;
   
   **Result**
   
