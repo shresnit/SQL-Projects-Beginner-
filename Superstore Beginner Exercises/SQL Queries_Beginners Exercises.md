@@ -12,20 +12,27 @@ Select ALL the records from SUPERSTORE
         FROM SUPERSTORE
         ;
 
-**Result**
+**Result** <br>
 *Result is too large to display*
 <br>
 <br>
 
 
 
--- Ex 2 Select ALL the records from Superstore_Orders 
+**Exercis 2** <br>
+Select ALL the records from Superstore_Orders 
         --That are in the East Region
         --That has a profit value greater than 200
-SELECT * 
-FROM SUPERSTORE
-WHERE Region = 'East' AND PROFIT>200
-;
+
+        SELECT * 
+        FROM SUPERSTORE
+        WHERE Region = 'East' AND PROFIT>200
+        ;
+
+**Result** <br>
+*Result is too large to display*
+<br>
+<br>
 
 
 -- Ex 2 Select Unique Products from Superstore_Orders
