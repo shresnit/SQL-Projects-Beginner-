@@ -50,6 +50,7 @@ Select ALL the records from Superstore_Orders <br>
 
 
 **Exercise 3** <br>
+--------------
 Select Unique Products from Superstore_Orders<br>
         --Those were sold in the South or Central Region  
         --That has a Sales value greater than 200 and less than 300  
@@ -69,6 +70,7 @@ Select Unique Products from Superstore_Orders<br>
 
 
 **Exercise 4** <br>
+--------------
 Select Unique Products from Superstore_Orders  
         --That have the letter ‘b’ in.  
         --Give two answers, one that is case sensitive and one that is case insensitive.  
@@ -91,6 +93,7 @@ Select Unique Products from Superstore_Orders
 
 
 **Exercise 5**  
+--------------
 Select ALL records from Superstore_Orders  
         --That are unprofitable  
         --That are either in the Central Region or in New York State  
@@ -105,6 +108,7 @@ Select ALL records from Superstore_Orders
 
 
 **Exercise 6**  
+--------------
 Find the 10 largest sales values in Superstore_Orders  
         --One answer using TOP and another using LIMIT  
         --Remember to ORDER BY  
@@ -130,6 +134,7 @@ Find the 10 largest sales values in Superstore_Orders
 
 
 **Exercise 7**  
+--------------
 Find the Total Sales & Profit for each Region  
 
         SELECT REGION,
@@ -141,6 +146,7 @@ Find the Total Sales & Profit for each Region
 
 
 **Exercise 8**  
+--------------
 Find the Average Discount by Segment & Ship Mode  
         --Alias the Avg Discount to something of your choice.  
         --Order from highest to lowest Avg Discount.  
@@ -154,7 +160,8 @@ Find the Average Discount by Segment & Ship Mode
          ;
 
 
- **Exercise 9**  
+ **Exercise 9** 
+ --------------
  For the Central Region  
         --Find the Minimum Profit value per Sub-Category  
         --Alias the Minimum Profit field  
@@ -171,6 +178,7 @@ Find the Average Discount by Segment & Ship Mode
 
 
  **Exercise 10**  
+ --------------
  Which Order Dates had a total profit greater than 2000?  
         --Alias your profit aggregation  
         --Sort from highest to lowest profit  
@@ -184,6 +192,7 @@ Find the Average Discount by Segment & Ship Mode
          ;
 
  **Exercise 11**  
+ --------------
  For the Central Region, which Products had an average profit less than -400?  
         --Alias your profit aggregation  
         --Sort from lowest to highest avg profit  
@@ -200,6 +209,7 @@ Find the Average Discount by Segment & Ship Mode
 
 
  **Exercise 12**  
+ --------------
  For Florida State in the Superstore_Joined table  
         --Find the total Sales value of items returned and not returned SUM(“Sales”)  
         --Find the total number of items returned and not returned COUNT(“Product Name”)  
@@ -217,6 +227,7 @@ Find the Average Discount by Segment & Ship Mode
          ;
 
  **Exercise 13**  
+ --------------
  For the Furniture Category in the Superstore_Joined table  
         --Find the top 10 order values for orders with a profit < 0 (Is Value Number of items in an order OR Total Sales of Order ID?? )  
         --Ensure the orders have not been returned
@@ -238,6 +249,7 @@ Find the Average Discount by Segment & Ship Mode
 
 
  **Exercise 14**  
+ --------------
  Join Superstore_Orders to Superstore_Returns, selecting all columns.  
         --First do an Inner Join  
         --Then do a Left Join  
@@ -280,6 +292,7 @@ Find the Average Discount by Segment & Ship Mode
 
 
 **Exercise 15 PART 1**  
+--------------
 Join CUSTOMERS to CUSTOMER_SALES_REP  
         -- Can you work out how many customers do not have a Sales representative?   
         -- HINT: Use a LEFT JOIN.  
@@ -292,6 +305,7 @@ Join CUSTOMERS to CUSTOMER_SALES_REP
         ;
 
 **Exercose 15 PART 2**   
+--------------
 Join CUSTOMERS to CUSTOMER_SALES_REP   
         -- Can you work out how many customers do not have a Sales representative?   
         -- HINT: Use a LEFT JOIN.  
@@ -307,6 +321,7 @@ Join CUSTOMERS to CUSTOMER_SALES_REP
 
 
 **Exercise 15: Part 3**  
+--------------
 Add to your query from Part 2:  
         --Perform a further (INNER) Join to include the ORDERS table in your query.  
         --Why have the numbers changed?  
@@ -325,7 +340,8 @@ Add to your query from Part 2:
         -- This number changed because only matched records were included i.e. all the customer with active orders had Sales Rep
 
 
-**Exercise 16**   
+**Exercise 16**  
+--------------
 Join ORDERS to PRODUCTS  
         --To find how many times each product was sold in each Year.  
         --Sort so we can see the best selling product for a given Year.  
@@ -344,6 +360,7 @@ Join ORDERS to PRODUCTS
 
 
 **Exercise 17**  
+--------------
 Using Superstore_Orders table  
         --How many Regions have at least 4 different States with a total Profit > 7000?
 
