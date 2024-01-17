@@ -22,10 +22,12 @@ Select ALL the records from SUPERSTORE
 Select ALL the records from Superstore_Orders <br>
         --That are in the East Region<br>
         --That has a profit value greater than 200
+        --Limit to 10
 
         SELECT * 
         FROM SUPERSTORE
         WHERE Region = 'East' AND PROFIT>200
+        Limit 10
         ;
 
 **Result** <br>
@@ -41,85 +43,92 @@ Select ALL the records from Superstore_Orders <br>
 |1002  |CA-2019-124891|2019-07-31|2019-07-31|Same Day      |RH-19495   |Rick Hansen    |Consumer   |United States|
 |1022  |CA-2019-124450|2019-04-27|2019-05-03|Standard Class|GT-14710   |Greg Tran      |Consumer   |United States|
 |1023  |CA-2019-124450|2019-04-27|2019-05-03|Standard Class|GT-14710   |Greg Tran      |Consumer   |United States|
-*
 <br>
 <br>
 
 
+**Exercise 3** <br>
+Select Unique Products from Superstore_Orders<br>
+        --Those were sold in the South or Central Region  
+        --That has a Sales value greater than 200 and less than 300  
 
--- Ex 2 Select Unique Products from Superstore_Orders
-        --Those were sold in the South or Central Region
-        --That has a Sales value greater than 200 and less than 300
-
-SELECT DISTINCT PRODUCT_ID,
-    REGION,
-    SALES
-FROM SUPERSTORE
-WHERE (REGION = 'South' OR REGION = 'Central') AND (SALES > 200 AND SALES < 300)
+        SELECT DISTINCT PRODUCT_ID,
+            REGION,
+            SALES
+        FROM SUPERSTORE
+        WHERE (REGION = 'South' OR REGION = 'Central') AND (SALES > 200 AND SALES < 300)
 
 
---Ex 4: Select Unique Products from Superstore_Orders
-        --That have the letter ‘b’ in.
-        --Give two answers, one that is case sensitive and one that is case insensitive.
+**Exercise 4** <br>
+Select Unique Products from Superstore_Orders  
+        --That have the letter ‘b’ in.  
+        --Give two answers, one that is case sensitive and one that is case insensitive.  
 
 --case sensitive
-SELECT DISTINCT PRODUCT_ID,
-    PRODUCT_NAME
-FROM SUPERSTORE
-WHERE product_name like '%b%'
-;
+        
+        SELECT DISTINCT PRODUCT_ID,
+            PRODUCT_NAME
+        FROM SUPERSTORE
+        WHERE product_name like '%b%'
+        ;
 
 --case insensitive
-SELECT DISTINCT PRODUCT_ID,
-    PRODUCT_NAME
-FROM SUPERSTORE
-WHERE lower(product_name) like '%b%' -- can also use 'ilike' function in Snowflake, recommend to use standard SQL 
-;
+        
+        SELECT DISTINCT PRODUCT_ID,
+            PRODUCT_NAME
+        FROM SUPERSTORE
+        WHERE lower(product_name) like '%b%' -- can also use 'ilike' function in Snowflake, recommend to use standard SQL 
+        ;
 
 
---Ex 5 Select ALL records from Superstore_Orders
-        --That are unprofitable
-        --That are either in the Central Region or in New York State
+**Exercise 5**  
+Select ALL records from Superstore_Orders  
+        --That are unprofitable  
+        --That are either in the Central Region or in New York State  
 
-SELECT ROW_ID,
-    PROFIT,
-    REGION,
-    STATE
-FROM SUPERSTORE
-WHERE PROFIT <= 0 AND (REGION = 'Central' OR STATE = 'New York')
-;
+        SELECT ROW_ID,
+            PROFIT,
+            REGION,
+            STATE
+        FROM SUPERSTORE
+        WHERE PROFIT <= 0 AND (REGION = 'Central' OR STATE = 'New York')
+        ;
 
 
---Ex 6 Find the 10 largest sales values in Superstore_Orders
-        --One answer using TOP and another using LIMIT
-        --Remember to ORDER BY
+**Exercise 6**  
+Find the 10 largest sales values in Superstore_Orders  
+        --One answer using TOP and another using LIMIT  
+        --Remember to ORDER BY  
 
 --Top
-SELECT TOP 10 ROW_ID,
-    ORDER_ID,
-    SALES
-FROM SUPERSTORE
-ORDER BY SALES DESC
-;
+
+        SELECT TOP 10 ROW_ID,
+            ORDER_ID,
+            SALES
+        FROM SUPERSTORE
+        ORDER BY SALES DESC
+        ;
 
 --Limit
-SELECT ROW_ID,
-    ORDER_ID,
-    SALES
-FROM SUPERSTORE
-ORDER BY SALES DESC
-LIMIT 10
-;
+
+        SELECT ROW_ID,
+            ORDER_ID,
+            SALES
+        FROM SUPERSTORE
+        ORDER BY SALES DESC
+        LIMIT 10
+        ;
 
 
---Ex 7 Find the Total Sales & Profit for each Region
+**Exercise 7**  
+Find the Total Sales & Profit for each Region  
 
-SELECT REGION,
-        SUM(SALES) AS Total_Sales,
-        SUM(PROFIT) AS Total_Profit
-FROM SUPERSTORE
-GROUP BY REGION
-;
+        SELECT REGION,
+                SUM(SALES) AS Total_Sales,
+                SUM(PROFIT) AS Total_Profit
+        FROM SUPERSTORE
+        GROUP BY REGION
+        ;
 
 
 --Ex 8 Find the Average Discount by Segment & Ship Mode
