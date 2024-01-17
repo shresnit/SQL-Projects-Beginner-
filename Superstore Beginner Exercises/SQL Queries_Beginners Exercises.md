@@ -6,6 +6,7 @@
 <br>
 
 **Exercise 1** <br>
+--------------
 Select ALL the records from SUPERSTORE
 
         SELECT * 
@@ -19,6 +20,7 @@ Select ALL the records from SUPERSTORE
 
 
 **Exercis 2** <br>
+--------------
 Select ALL the records from Superstore_Orders <br>
         --That are in the East Region<br>
         --That has a profit value greater than 200
