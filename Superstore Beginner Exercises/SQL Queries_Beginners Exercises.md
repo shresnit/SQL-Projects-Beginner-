@@ -7,12 +7,13 @@
 
 **Exercise 1** <br>
 Select ALL the records from SUPERSTORE
+
         SELECT * 
         FROM SUPERSTORE
         ;
 
 **Result**
-
+*Result is too large to display*
 <br>
 <br>
 
