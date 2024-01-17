@@ -18,7 +18,6 @@ Select ALL the records from SUPERSTORE
 <br>
 
 
-
 **Exercis 2** <br>
 Select ALL the records from Superstore_Orders 
         --That are in the East Region
@@ -33,6 +32,7 @@ Select ALL the records from Superstore_Orders
 *Result is too large to display*
 <br>
 <br>
+
 
 
 -- Ex 2 Select Unique Products from Superstore_Orders
