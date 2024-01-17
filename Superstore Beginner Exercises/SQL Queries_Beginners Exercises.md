@@ -131,166 +131,176 @@ Find the Total Sales & Profit for each Region
         ;
 
 
---Ex 8 Find the Average Discount by Segment & Ship Mode
-        --Alias the Avg Discount to something of your choice.
-        --Order from highest to lowest Avg Discount.
+**Exercise 8**  
+Find the Average Discount by Segment & Ship Mode  
+        --Alias the Avg Discount to something of your choice.  
+        --Order from highest to lowest Avg Discount.  
 
- SELECT SEGMENT,
-    SHIP_MODE,
-    AVG(DISCOUNT) AS Average_Discount
- FROM SUPERSTORE
- GROUP BY SEGMENT, SHIP_MODE
- ORDER BY Average_Discount DESC
- ;
-
-
- -- Ex 10 For the Central Region
-        --Find the Minimum Profit value per Sub-Category
-        --Alias the Minimum Profit field
-        --Order from lowest profit value to highest
-
-    SELECT REGION,
-        SUB_CATEGORY,
-        MIN(PROFIT) AS Minimum_Profit
-    FROM SUPERSTORE
-    WHERE REGION = 'Central'
-    GROUP BY REGION, SUB_CATEGORY 
-    ORDER BY Minimum_Profit ASC
-    ;
+         SELECT SEGMENT,
+            SHIP_MODE,
+            AVG(DISCOUNT) AS Average_Discount
+         FROM SUPERSTORE
+         GROUP BY SEGMENT, SHIP_MODE
+         ORDER BY Average_Discount DESC
+         ;
 
 
- --Ex 10 Which Order Dates had a total profit greater than 2000?
-        --Alias your profit aggregation
-        --Sort from highest to lowest profit
+ **Exercise 9**  
+ For the Central Region  
+        --Find the Minimum Profit value per Sub-Category  
+        --Alias the Minimum Profit field  
+        --Order from lowest profit value to highest  
 
- SELECT ORDER_DATE,
-    SUM(PROFIT) AS Total_Profit
- FROM SUPERSTORE
- GROUP BY ORDER_DATE
- HAVING SUM(PROFIT) > 2000
- ORDER BY Total_Profit DESC
- ;
-
- -- Ex 11 For the Central Region, which Products had an average profit less than -400?
-        --Alias your profit aggregation
-        --Sort from lowest to highest avg profit
-
- SELECT REGION,
-    PRODUCT_ID,
-    AVG(PROFIT) AS Avg_Profit
- FROM SUPERSTORE
- WHERE REGION = 'Central'
- GROUP BY REGION, PRODUCT_ID
- HAVING AVG(PROFIT) < -400
- ORDER BY Avg_Profit ASC
- ;
+            SELECT REGION,
+                SUB_CATEGORY,
+                MIN(PROFIT) AS Minimum_Profit
+            FROM SUPERSTORE
+            WHERE REGION = 'Central'
+            GROUP BY REGION, SUB_CATEGORY 
+            ORDER BY Minimum_Profit ASC
+            ;
 
 
- -- Ex 12 For Florida State in the Superstore_Joined table
-        --Find the total Sales value of items returned and not returned SUM(“Sales”)
-        --Find the total number of items returned and not returned COUNT(“Product Name”)
-        --Alias your fields
+ **Exercise 10**  
+ Which Order Dates had a total profit greater than 2000?  
+        --Alias your profit aggregation  
+        --Sort from highest to lowest profit  
 
- SELECT 
-    IFF(RETURNED = 'Yes', 'Returned', 'Not returned') AS Return_Status,
-    SUM(SALES) AS Total_Sales,
-    COUNT(S.PRODUCT_NAME) AS Total_ItemCounts
- FROM SUPERSTORE AS S
- LEFT JOIN RETURNED_ORDERS AS R
- ON S.ORDER_ID = R.ORDER_ID
- WHERE STATE = 'Florida'
- GROUP BY R.RETURNED
- ;
+         SELECT ORDER_DATE,
+            SUM(PROFIT) AS Total_Profit
+         FROM SUPERSTORE
+         GROUP BY ORDER_DATE
+         HAVING SUM(PROFIT) > 2000
+         ORDER BY Total_Profit DESC
+         ;
 
- -- Ex 13 For the Furniture Category in the Superstore_Joined table
-        --Find the top 10 order values for orders with a profit < 0 (Is Value Number of items in an order OR Total Sales of Order ID?? )
+ **Exercise 11**  
+ For the Central Region, which Products had an average profit less than -400?  
+        --Alias your profit aggregation  
+        --Sort from lowest to highest avg profit  
+
+         SELECT REGION,
+            PRODUCT_ID,
+            AVG(PROFIT) AS Avg_Profit
+         FROM SUPERSTORE
+         WHERE REGION = 'Central'
+         GROUP BY REGION, PRODUCT_ID
+         HAVING AVG(PROFIT) < -400
+         ORDER BY Avg_Profit ASC
+         ;
+
+
+ **Exercise 12**  
+ For Florida State in the Superstore_Joined table  
+        --Find the total Sales value of items returned and not returned SUM(“Sales”)  
+        --Find the total number of items returned and not returned COUNT(“Product Name”)  
+        --Alias your fields  
+
+         SELECT 
+            IFF(RETURNED = 'Yes', 'Returned', 'Not returned') AS Return_Status,
+            SUM(SALES) AS Total_Sales,
+            COUNT(S.PRODUCT_NAME) AS Total_ItemCounts
+         FROM SUPERSTORE AS S
+         LEFT JOIN RETURNED_ORDERS AS R
+         ON S.ORDER_ID = R.ORDER_ID
+         WHERE STATE = 'Florida'
+         GROUP BY R.RETURNED
+         ;
+
+ **Exercise 13**  
+ For the Furniture Category in the Superstore_Joined table  
+        --Find the top 10 order values for orders with a profit < 0 (Is Value Number of items in an order OR Total Sales of Order ID?? )  
         --Ensure the orders have not been returned
-        --Alias your fields
+        --Alias your fields  
 
     
- SELECT TOP 10 S.ORDER_ID,
-    IFF(RETURNED = 'Yes', 'Returned', 'Not returned') AS Return_Status,
-    COUNT(PRODUCT_ID) AS Order_Values,
-    SUM(PROFIT) AS Total_Profit
- FROM SUPERSTORE AS S
- LEFT JOIN RETURNED_ORDERS AS R
- ON S.ORDER_ID = R.ORDER_ID
- WHERE CATEGORY = 'Furniture'
- GROUP BY S.ORDER_ID, RETURNED
- HAVING SUM(PROFIT) < 0 AND IFF(RETURNED = 'Yes', 'Returned', 'Not returned') = 'Not returned'
- ORDER BY Order_Values DESC
- ;
+         SELECT TOP 10 S.ORDER_ID,
+            IFF(RETURNED = 'Yes', 'Returned', 'Not returned') AS Return_Status,
+            COUNT(PRODUCT_ID) AS Order_Values,
+            SUM(PROFIT) AS Total_Profit
+         FROM SUPERSTORE AS S
+         LEFT JOIN RETURNED_ORDERS AS R
+         ON S.ORDER_ID = R.ORDER_ID
+         WHERE CATEGORY = 'Furniture'
+         GROUP BY S.ORDER_ID, RETURNED
+         HAVING SUM(PROFIT) < 0 AND IFF(RETURNED = 'Yes', 'Returned', 'Not returned') = 'Not returned'
+         ORDER BY Order_Values DESC
+         ;
 
 
- --Ex 14 Join Superstore_Orders to Superstore_Returns, selecting all columns.
-        --First do an Inner Join
-        --Then do a Left Join
-        --Then a Right Join
-        --Does the output change? And how? Why is it changing?
+ **Exercise 14**  
+ Join Superstore_Orders to Superstore_Returns, selecting all columns.  
+        --First do an Inner Join  
+        --Then do a Left Join  
+        --Then a Right Join  
+        --Does the output change? And how? Why is it changing?  
 
 
--- Inner Join
- SELECT *
- FROM SUPERSTORE AS S
- INNER JOIN RETURNED_ORDERS AS R
- ON S.ORDER_ID = R.ORDER_ID
- ;
+-- Inner Join  
 
-  -- Inner join resulted in 3226 records. Matching records on both tables based on ORDER_ID.
+         SELECT *
+         FROM SUPERSTORE AS S
+         INNER JOIN RETURNED_ORDERS AS R
+         ON S.ORDER_ID = R.ORDER_ID
+         ;
+
+  Note Inner join resulted in 3226 records. Matching records on both tables based on ORDER_ID.
 
 
- --Left Join
- SELECT *
- FROM SUPERSTORE AS S
- LEFT JOIN RETURNED_ORDERS AS R
- ON S.ORDER_ID = R.ORDER_ID
- ;
+         --Left Join
+         SELECT *
+         FROM SUPERSTORE AS S
+         LEFT JOIN RETURNED_ORDERS AS R
+         ON S.ORDER_ID = R.ORDER_ID
+         ;
 
-  -- Left join resulted in 12420 records. Matching records from RETURNED_ORDERS table and all records FROM SUPERSTORE table based on ORDER_ID.
+  Note: Left join resulted in 12420 records. Matching records from RETURNED_ORDERS table and all records FROM SUPERSTORE table based on ORDER_ID.
 
 
  --Right Join
- SELECT *
- FROM SUPERSTORE AS S
- RIGHT JOIN RETURNED_ORDERS AS R
- ON S.ORDER_ID = R.ORDER_ID
- ;
+ 
+         SELECT *
+         FROM SUPERSTORE AS S
+         RIGHT JOIN RETURNED_ORDERS AS R
+         ON S.ORDER_ID = R.ORDER_ID
+         ;
 
- -- Right join resulted in 3226 records. Matching records from SUPERSTORE table and all records FROM RETURNED_ORDERS table based on ORDER_ID.
- -- The result of the INNER and RIGHT join is the same because all the records from the RETURNED_ORDERS matched with the SUPERSTORE table.
-
-
-
---Ex 15 PART 1: Join CUSTOMERS to CUSTOMER_SALES_REP
-        -- Can you work out how many customers do not have a Sales representative? 
-        -- HINT: Use a LEFT JOIN.
+ Note: Right join resulted in 3226 records. Matching records from SUPERSTORE table and all records FROM RETURNED_ORDERS table based on ORDER_ID.  
+ The result of the INNER and RIGHT join is the same because all the records from the RETURNED_ORDERS matched with the SUPERSTORE table.
 
 
-SELECT COUNT(L.CUSTOMER_ID) AS Number_of_Customer
-FROM CUSTOMERS AS L
-LEFT JOIN CUSTOMER_SALES_REP AS R
-ON L.CUSTOMER_ID = R.CUSTOMER_ID
-WHERE IFF(R.sales_person_id IS NULL,'No Sales Rep', 'Sales Rep') = 'No Sales Rep'
-;
 
---Ex 15 PART 2: Join CUSTOMERS to CUSTOMER_SALES_REP
-        -- Can you work out how many customers do not have a Sales representative? 
-        -- HINT: Use a LEFT JOIN.
+**Exercise 15 PART 1**  
+Join CUSTOMERS to CUSTOMER_SALES_REP  
+        -- Can you work out how many customers do not have a Sales representative?   
+        -- HINT: Use a LEFT JOIN.  
 
--- How could we go about counting the number of customers with and without a sales rep, creating a field to group them by?
+        SELECT COUNT(L.CUSTOMER_ID) AS Number_of_Customer
+        FROM CUSTOMERS AS L
+        LEFT JOIN CUSTOMER_SALES_REP AS R
+        ON L.CUSTOMER_ID = R.CUSTOMER_ID
+        WHERE IFF(R.sales_person_id IS NULL,'No Sales Rep', 'Sales Rep') = 'No Sales Rep'
+        ;
 
-SELECT IFF(R.sales_person_id IS NULL,'No Sales Rep', 'Sales Rep') AS Sales_Reps,
-    COUNT(DISTINCT L.CUSTOMER_ID) AS Number_of_Customer
-FROM CUSTOMERS AS L
-LEFT JOIN CUSTOMER_SALES_REP AS R
-ON L.CUSTOMER_ID = R.CUSTOMER_ID
-GROUP BY Sales_Reps
-;
+**Exercose 15 PART 2**   
+Join CUSTOMERS to CUSTOMER_SALES_REP   
+        -- Can you work out how many customers do not have a Sales representative?   
+        -- HINT: Use a LEFT JOIN.  
+-- How could we go about counting the number of customers with and without a sales rep, creating a field to group them by?  
+
+        SELECT IFF(R.sales_person_id IS NULL,'No Sales Rep', 'Sales Rep') AS Sales_Reps,
+            COUNT(DISTINCT L.CUSTOMER_ID) AS Number_of_Customer
+        FROM CUSTOMERS AS L
+        LEFT JOIN CUSTOMER_SALES_REP AS R
+        ON L.CUSTOMER_ID = R.CUSTOMER_ID
+        GROUP BY Sales_Reps
+        ;
 
 
---Ex 15 Add to your query from Part 2:
-        --Perform a further (INNER) Join to include the ORDERS table in your query.
-        --Why have the numbers changed?
+**Exercise 15: Part 3**  
+Add to your query from Part 2:  
+        --Perform a further (INNER) Join to include the ORDERS table in your query.  
+        --Why have the numbers changed?  
 
 SELECT IFF(R.sales_person_id IS NULL,'No Sales Rep', 'Sales Rep') AS Sales_Reps,
     COUNT( DISTINCT L.CUSTOMER_ID) AS Number_of_Customer
@@ -306,24 +316,26 @@ GROUP BY Sales_Reps
         -- This number changed because only matched records were included i.e. all the customer with active orders had Sales Rep
 
 
--- Ex 16 Join ORDERS to PRODUCTS
-        --To find how many times each product was sold in each Year.
-        --Sort so we can see the best selling product for a given Year.
-        --HINT: In Snowflake YEAR(“date”) is a function.
-        --Remember to Alias.
+**Exercise 16**   
+Join ORDERS to PRODUCTS  
+        --To find how many times each product was sold in each Year.  
+        --Sort so we can see the best selling product for a given Year.  
+        --HINT: In Snowflake YEAR(“date”) is a function.  
+        --Remember to Alias.  
 
-    SELECT YEAR(L.ORDER_DATE) AS Year,
-        L.PRODUCT_ID,
-        COUNT(*) AS TimesProductSold
-    FROM ORDERS AS L
-    INNER JOIN PRODUCTS AS R
-        ON L.PRODUCT_ID = R.PRODUCT_ID
-    GROUP BY Year, L.PRODUCT_ID
-    ORDER BY TimesProductSold DESC
-    ;
+            SELECT YEAR(L.ORDER_DATE) AS Year,
+                L.PRODUCT_ID,
+                COUNT(*) AS TimesProductSold
+            FROM ORDERS AS L
+            INNER JOIN PRODUCTS AS R
+                ON L.PRODUCT_ID = R.PRODUCT_ID
+            GROUP BY Year, L.PRODUCT_ID
+            ORDER BY TimesProductSold DESC
+            ;
 
 
---Ex 17 Using Superstore_Orders table
+**Exercise 17**  
+Using Superstore_Orders table  
         --How many Regions have at least 4 different States with a total Profit > 7000?
 
     SELECT COUNT(REGION) AS NumberOfRegion
