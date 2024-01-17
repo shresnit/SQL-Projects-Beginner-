@@ -29,7 +29,19 @@ Select ALL the records from Superstore_Orders <br>
         ;
 
 **Result** <br>
-*Result is too large to display*
+|ROW_ID|ORDER_ID      |ORDER_DATE|SHIP_DATE |SHIP_MODE     |CUSTOMER_ID|CUSTOMER_NAME  |SEGMENT    |COUNTRY      |
+|------|--------------|----------|----------|--------------|-----------|---------------|-----------|-------------|
+|55    |CA-2020-105816|2020-12-11|2020-12-17|Standard Class|JM-15265   |Janet Molinari |Corporate  |United States|
+|319   |CA-2018-164973|2018-11-04|2018-11-09|Standard Class|NM-18445   |Nathan Mautz   |Home Office|United States|
+|354   |CA-2020-129714|2020-09-01|2020-09-03|First Class   |AB-10060   |Adam Bellavance|Home Office|United States|
+|370   |CA-2020-155516|2020-10-21|2020-10-21|Same Day      |MK-17905   |Michael Kennedy|Corporate  |United States|
+|434   |CA-2020-127369|2020-06-06|2020-06-07|First Class   |DB-13060   |Dave Brooks    |Consumer   |United States|
+|881   |CA-2021-111689|2021-11-30|2021-12-02|Second Class  |HP-14815   |Harold Pawlan  |Home Office|United States|
+|925   |CA-2020-149797|2020-09-15|2020-09-20|Standard Class|AH-10075   |Adam Hart      |Corporate  |United States|
+|1002  |CA-2019-124891|2019-07-31|2019-07-31|Same Day      |RH-19495   |Rick Hansen    |Consumer   |United States|
+|1022  |CA-2019-124450|2019-04-27|2019-05-03|Standard Class|GT-14710   |Greg Tran      |Consumer   |United States|
+|1023  |CA-2019-124450|2019-04-27|2019-05-03|Standard Class|GT-14710   |Greg Tran      |Consumer   |United States|
+*
 <br>
 <br>
 
