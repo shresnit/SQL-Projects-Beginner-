@@ -59,10 +59,10 @@ Select Unique Products from Superstore_Orders<br>
         WHERE (REGION = 'South' OR REGION = 'Central') AND (SALES > 200 AND SALES < 300)
 
 **Result** <br>
+----------------
 
 <br>
 <br>
----------------------------------------------
 
 
 
