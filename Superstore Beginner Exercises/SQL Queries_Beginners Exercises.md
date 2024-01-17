@@ -58,6 +58,13 @@ Select Unique Products from Superstore_Orders<br>
         FROM SUPERSTORE
         WHERE (REGION = 'South' OR REGION = 'Central') AND (SALES > 200 AND SALES < 300)
 
+**Result** <br>
+
+<br>
+<br>
+---------------------------------------------
+
+
 
 **Exercise 4** <br>
 Select Unique Products from Superstore_Orders  
@@ -302,15 +309,15 @@ Add to your query from Part 2:
         --Perform a further (INNER) Join to include the ORDERS table in your query.  
         --Why have the numbers changed?  
 
-SELECT IFF(R.sales_person_id IS NULL,'No Sales Rep', 'Sales Rep') AS Sales_Reps,
-    COUNT( DISTINCT L.CUSTOMER_ID) AS Number_of_Customer
-FROM CUSTOMERS AS L
-LEFT JOIN CUSTOMER_SALES_REP AS R
-    ON L.CUSTOMER_ID = R.CUSTOMER_ID
-INNER JOIN ORDERS AS O
-    ON R.CUSTOMER_ID = O.CUSTOMER_ID
-GROUP BY Sales_Reps
-;
+        SELECT IFF(R.sales_person_id IS NULL,'No Sales Rep', 'Sales Rep') AS Sales_Reps,
+            COUNT( DISTINCT L.CUSTOMER_ID) AS Number_of_Customer
+        FROM CUSTOMERS AS L
+        LEFT JOIN CUSTOMER_SALES_REP AS R
+            ON L.CUSTOMER_ID = R.CUSTOMER_ID
+        INNER JOIN ORDERS AS O
+            ON R.CUSTOMER_ID = O.CUSTOMER_ID
+        GROUP BY Sales_Reps
+        ;
 
 --Notes: As we included the Order tables the count of customer decreases and was limited to only those with Sales Rep.
         -- This number changed because only matched records were included i.e. all the customer with active orders had Sales Rep
