@@ -125,11 +125,23 @@ Select Unique Products from Superstore_Orders
             PRODUCT_NAME
         FROM SUPERSTORE
         WHERE lower(product_name) like '%b%' -- can also use 'ilike' function in Snowflake, recommend to use standard SQL 
-        ;
+        Limit 10;
 
 
 **Result** <br>
 
+|PRODUCT_ID|PRODUCT_NAME  |
+|----------|--------------|
+|FUR-BO-10001798|Bush Somerset Collection Bookcase|
+|FUR-CH-10000454|Hon Deluxe Fabric Upholstered Stacking Chairs, Rounded Back|
+|OFF-LA-10000240|Self-Adhesive Address Labels for Typewriters by Universal|
+|FUR-TA-10000577|Bretford CR4500 Series Slim Rectangular Table|
+|OFF-BI-10003910|DXL Angle-View Binders with Locking Rings by Samsill|
+|OFF-AP-10002892|Belkin F5C206VTEL 6 Outlet Surge|
+|FUR-TA-10001539|Chromcraft Rectangular Conference Tables|
+|TEC-PH-10002033|Konftel 250 Conference phone - Charcoal black|
+|OFF-BI-10003656|Fellowes PB200 Plastic Comb Binding Machine|
+|OFF-BI-10000756|Storex DuraTech Recycled Plastic Frosted Binders|
 
 
 <br>
