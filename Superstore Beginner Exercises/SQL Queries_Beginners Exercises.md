@@ -5,10 +5,18 @@
 <br>
 <br>
 
---Ex1 Select ALL the records from SUPERSTORE
-SELECT * 
-FROM SUPERSTORE
-;
+**Exercise 1** <br>
+Select ALL the records from SUPERSTORE
+        SELECT * 
+        FROM SUPERSTORE
+        ;
+
+**Result**
+
+<br>
+<br>
+
+
 
 -- Ex 2 Select ALL the records from Superstore_Orders 
         --That are in the East Region
