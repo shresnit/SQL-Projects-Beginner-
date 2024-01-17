@@ -19,12 +19,12 @@ Select ALL the records from SUPERSTORE
 <br>
 
 
-**Exercis 2** <br>
+**Exercise 2** <br>
 --------------
 Select ALL the records from Superstore_Orders <br>
-        --That are in the East Region<br>
-        --That has a profit value greater than 200
-        --Limit to 10
+        - That are in the East Region<br>
+        - That has a profit value greater than 200
+        - Limit to 10
 
         SELECT * 
         FROM SUPERSTORE
@@ -53,16 +53,32 @@ Select ALL the records from Superstore_Orders <br>
 --------------
 Select Unique Products from Superstore_Orders<br>
         --Those were sold in the South or Central Region  
-        --That has a Sales value greater than 200 and less than 300  
+        --That has a Sales value greater than 200 and less than 300 
+        --Limit result to 10 records
 
         SELECT DISTINCT PRODUCT_ID,
             REGION,
             SALES
         FROM SUPERSTORE
         WHERE (REGION = 'South' OR REGION = 'Central') AND (SALES > 200 AND SALES < 300)
+        Limit 10
+        ;
 
 **Result** <br>
-----------------
+
+|PRODUCT_ID|REGION        |SALES     |
+|----------|--------------|----------|
+|FUR-BO-10001798|South         |261.96    |
+|FUR-CH-10004218|Central       |212.058   |
+|OFF-ST-10001713|Central       |211.96    |
+|FUR-CH-10001146|Central       |213.115   |
+|OFF-EN-10000927|South         |200.984   |
+|OFF-ST-10003656|Central       |230.376   |
+|OFF-ST-10000991|Central       |275.928   |
+|FUR-TA-10001705|South         |233.86    |
+|FUR-FU-10004017|South         |258.072   |
+|OFF-AP-10002118|South         |208.16    |
+
 
 <br>
 <br>
@@ -73,7 +89,8 @@ Select Unique Products from Superstore_Orders<br>
 --------------
 Select Unique Products from Superstore_Orders  
         --That have the letter ‘b’ in.  
-        --Give two answers, one that is case sensitive and one that is case insensitive.  
+        --Give two answers, one that is case sensitive and one that is case insensitive.    
+        --Limit to 10 records
 
 --case sensitive
         
@@ -81,7 +98,26 @@ Select Unique Products from Superstore_Orders
             PRODUCT_NAME
         FROM SUPERSTORE
         WHERE product_name like '%b%'
-        ;
+        Limit 10;
+
+**Result** <br>
+
+|PRODUCT_ID|PRODUCT_NAME  |
+|----------|--------------|
+|FUR-CH-10000454|Hon Deluxe Fabric Upholstered Stacking Chairs, Rounded Back|
+|OFF-LA-10000240|Self-Adhesive Address Labels for Typewriters by Universal|
+|FUR-TA-10000577|Bretford CR4500 Series Slim Rectangular Table|
+|OFF-BI-10003910|DXL Angle-View Binders with Locking Rings by Samsill|
+|FUR-TA-10001539|Chromcraft Rectangular Conference Tables|
+|TEC-PH-10002033|Konftel 250 Conference phone - Charcoal black|
+|OFF-BI-10003656|Fellowes PB200 Plastic Comb Binding Machine|
+|FUR-CH-10002774|Global Deluxe Stacking Chair, Gray|
+|OFF-BI-10001525|Acco Pressboard Covers with Storage Hooks, 14 7/8" x 11", Executive Red|
+|OFF-AR-10001683|Lumber Crayons|
+
+
+<br>
+<br>
 
 --case insensitive
         
@@ -90,6 +126,14 @@ Select Unique Products from Superstore_Orders
         FROM SUPERSTORE
         WHERE lower(product_name) like '%b%' -- can also use 'ilike' function in Snowflake, recommend to use standard SQL 
         ;
+
+
+**Result** <br>
+
+
+
+<br>
+<br>
 
 
 **Exercise 5**  
@@ -105,6 +149,14 @@ Select ALL records from Superstore_Orders
         FROM SUPERSTORE
         WHERE PROFIT <= 0 AND (REGION = 'Central' OR STATE = 'New York')
         ;
+
+
+**Result** <br>
+
+
+
+<br>
+<br>
 
 
 **Exercise 6**  
@@ -133,6 +185,14 @@ Find the 10 largest sales values in Superstore_Orders
         ;
 
 
+**Result** <br>
+
+
+
+<br>
+<br>
+
+
 **Exercise 7**  
 --------------
 Find the Total Sales & Profit for each Region  
@@ -143,6 +203,14 @@ Find the Total Sales & Profit for each Region
         FROM SUPERSTORE
         GROUP BY REGION
         ;
+
+
+**Result** <br>
+
+
+
+<br>
+<br>
 
 
 **Exercise 8**  
@@ -160,6 +228,14 @@ Find the Average Discount by Segment & Ship Mode
          ;
 
 
+**Result** <br>
+
+
+
+<br>
+<br>
+
+
  **Exercise 9** 
  --------------
  For the Central Region  
@@ -175,6 +251,14 @@ Find the Average Discount by Segment & Ship Mode
             GROUP BY REGION, SUB_CATEGORY 
             ORDER BY Minimum_Profit ASC
             ;
+
+
+**Result** <br>
+
+
+
+<br>
+<br>
 
 
  **Exercise 10**  
@@ -208,6 +292,14 @@ Find the Average Discount by Segment & Ship Mode
          ;
 
 
+**Result** <br>
+
+
+
+<br>
+<br>
+
+
  **Exercise 12**  
  --------------
  For Florida State in the Superstore_Joined table  
@@ -225,6 +317,14 @@ Find the Average Discount by Segment & Ship Mode
          WHERE STATE = 'Florida'
          GROUP BY R.RETURNED
          ;
+
+**Result** <br>
+
+
+
+<br>
+<br>
+
 
  **Exercise 13**  
  --------------
@@ -248,6 +348,14 @@ Find the Average Discount by Segment & Ship Mode
          ;
 
 
+**Result** <br>
+
+
+
+<br>
+<br>
+
+
  **Exercise 14**  
  --------------
  Join Superstore_Orders to Superstore_Returns, selecting all columns.  
@@ -265,6 +373,14 @@ Find the Average Discount by Segment & Ship Mode
          ON S.ORDER_ID = R.ORDER_ID
          ;
 
+**Result** <br>
+
+
+
+<br>
+<br>
+
+
   Note Inner join resulted in 3226 records. Matching records on both tables based on ORDER_ID.
 
 
@@ -274,6 +390,14 @@ Find the Average Discount by Segment & Ship Mode
          LEFT JOIN RETURNED_ORDERS AS R
          ON S.ORDER_ID = R.ORDER_ID
          ;
+
+**Result** <br>
+
+
+
+<br>
+<br>
+
 
   Note: Left join resulted in 12420 records. Matching records from RETURNED_ORDERS table and all records FROM SUPERSTORE table based on ORDER_ID.
 
@@ -285,6 +409,14 @@ Find the Average Discount by Segment & Ship Mode
          RIGHT JOIN RETURNED_ORDERS AS R
          ON S.ORDER_ID = R.ORDER_ID
          ;
+
+**Result** <br>
+
+
+
+<br>
+<br>
+
 
  Note: Right join resulted in 3226 records. Matching records from SUPERSTORE table and all records FROM RETURNED_ORDERS table based on ORDER_ID.  
  The result of the INNER and RIGHT join is the same because all the records from the RETURNED_ORDERS matched with the SUPERSTORE table.
@@ -304,6 +436,14 @@ Join CUSTOMERS to CUSTOMER_SALES_REP
         WHERE IFF(R.sales_person_id IS NULL,'No Sales Rep', 'Sales Rep') = 'No Sales Rep'
         ;
 
+**Result** <br>
+
+
+
+<br>
+<br>
+
+
 **Exercose 15 PART 2**   
 --------------
 Join CUSTOMERS to CUSTOMER_SALES_REP   
@@ -318,6 +458,14 @@ Join CUSTOMERS to CUSTOMER_SALES_REP
         ON L.CUSTOMER_ID = R.CUSTOMER_ID
         GROUP BY Sales_Reps
         ;
+
+
+**Result** <br>
+
+
+
+<br>
+<br>
 
 
 **Exercise 15: Part 3**  
@@ -335,6 +483,14 @@ Add to your query from Part 2:
             ON R.CUSTOMER_ID = O.CUSTOMER_ID
         GROUP BY Sales_Reps
         ;
+
+**Result** <br>
+
+
+
+<br>
+<br>
+
 
 --Notes: As we included the Order tables the count of customer decreases and was limited to only those with Sales Rep.
         -- This number changed because only matched records were included i.e. all the customer with active orders had Sales Rep
@@ -358,6 +514,14 @@ Join ORDERS to PRODUCTS
             ORDER BY TimesProductSold DESC
             ;
 
+**Result** <br>
+
+
+
+<br>
+<br>
+
+
 
 **Exercise 17**  
 --------------
@@ -379,3 +543,11 @@ Using Superstore_Orders table
         GROUP BY REGION)
     WHERE COUNT_REGION >= 4
     ;
+
+**Result** <br>
+
+
+
+<br>
+<br>
+
