@@ -19,8 +19,8 @@ Select ALL the records from SUPERSTORE
 
 
 **Exercis 2** <br>
-Select ALL the records from Superstore_Orders 
-        --That are in the East Region
+Select ALL the records from Superstore_Orders <br>
+        --That are in the East Region<br>
         --That has a profit value greater than 200
 
         SELECT * 
