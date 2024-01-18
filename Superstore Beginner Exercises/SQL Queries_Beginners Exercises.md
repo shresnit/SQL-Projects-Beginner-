@@ -1,6 +1,7 @@
 **SQL Beginner's Exercises - Super Store**
 -------------------------------------------------------------
-*The data for the exercises are in the Root Folder of this Project (Superstore Beginner Exercises/Data)*
+-------------------------------------------------------------
+*The data for the exercises are in the Root Folder of this Project*
 <br>
 <br>
 <br>
