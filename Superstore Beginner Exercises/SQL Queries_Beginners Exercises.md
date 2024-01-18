@@ -7,6 +7,7 @@
 <br>
 
 **Exercise 1** <br>
+
 --------------
 Select ALL the records from SUPERSTORE
 
