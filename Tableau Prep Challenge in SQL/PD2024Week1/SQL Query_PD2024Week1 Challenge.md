@@ -16,7 +16,9 @@ The first task is setting some context for later weeks by understanding how popu
   - Date to a date format
   - Price to a decimal value
 - Change the Flow Card field to Yes / No values instead of 1 / 0
-- Create two tables, one for Flow Card holders and one for non-Flow Card holders
+- Create two tables, one for Flow Card holders and one for non-Flow Card holders  
+  <br>
+*The data source is in the PD2024Week1 folder*
   <br>
   <br>
 
