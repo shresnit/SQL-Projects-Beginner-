@@ -1,13 +1,12 @@
 **SQL Beginner's Exercises - Super Store**  
-
+<br>
 -------------------------------------------------------------
-*The data for the exercises are in the Root Folder of this Project*
+*The datasets for the exercises are in the  'Data' folder of this Project*
+
 <br>
-<br>
-<br>
+
 
 **Exercise 1** <br>
-
 --------------
 Select ALL the records from SUPERSTORE
 
@@ -155,6 +154,7 @@ Select Unique Products from Superstore_Orders
 Select ALL records from Superstore_Orders  
         --That are unprofitable  
         --That are either in the Central Region or in New York State  
+        --Limit to 10 records
 
         SELECT ROW_ID,
             PROFIT,
@@ -167,6 +167,18 @@ Select ALL records from Superstore_Orders
 
 **Result** <br>
 
+|ROW_ID|PROFIT  |REGION |STATE   |
+|------|--------|-------|--------|
+|15    |-123.858|Central|Texas   |
+|16    |-3.816  |Central|Texas   |
+|37    |-147.963|Central|Texas   |
+|39    |-46.9764|Central|Texas   |
+|40    |-15.147 |Central|Texas   |
+|67    |-15.2225|Central|Illinois|
+|76    |-1.9344 |Central|Texas   |
+|77    |-5.8248 |Central|Texas   |
+|79    |-14.475 |Central|Texas   |
+|85    |-48.9549|Central|Illinois|
 
 
 <br>
@@ -201,6 +213,19 @@ Find the 10 largest sales values in Superstore_Orders
 
 **Result** <br>
 
+|FIELD1|ROW_ID  |PROFIT |REGION  |STATE   |FIELD6|
+|------|--------|-------|--------|--------|------|
+|      |------  |--------|------- |--------|      |
+|      |15      |-123.858|Central |Texas   |      |
+|      |16      |-3.816  |Central |Texas   |      |
+|      |37      |-147.963|Central |Texas   |      |
+|      |39      |-46.9764|Central |Texas   |      |
+|      |40      |-15.147 |Central |Texas   |      |
+|      |67      |-15.2225|Central |Illinois|      |
+|      |76      |-1.9344 |Central |Texas   |      |
+|      |77      |-5.8248 |Central |Texas   |      |
+|      |79      |-14.475 |Central |Texas   |      |
+|      |85      |-48.9549|Central |Illinois|      |
 
 
 <br>
@@ -221,6 +246,12 @@ Find the Total Sales & Profit for each Region
 
 **Result** <br>
 
+|REGION|TOTAL_SALES|TOTAL_PROFIT|
+|------|-----------|------------|
+|South |391721.905 |46749.4303  |
+|West  |725457.8245|108418.4489 |
+|Central|501239.8908|39706.3625  |
+|East  |678781.24  |91522.78    |
 
 
 <br>
@@ -244,6 +275,20 @@ Find the Average Discount by Segment & Ship Mode
 
 **Result** <br>
 
+|SEGMENT|SHIP_MODE|AVERAGE_DISCOUNT|
+|-------|---------|----------------|
+|Corporate|First Class|0.105155        |
+|Consumer|First Class|0.102731        |
+|Corporate|Standard Class|0.098786        |
+|Consumer|Same Day |0.097792        |
+|Consumer|Standard Class|0.096921        |
+|Home Office|Standard Class|0.094304        |
+|Home Office|First Class|0.091549        |
+|Consumer|Second Class|0.077451        |
+|Home Office|Second Class|0.069620        |
+|Corporate|Second Class|0.067323        |
+|Home Office|Same Day |0.062500        |
+|Corporate|Same Day |0.061404        |
 
 
 <br>
@@ -269,6 +314,25 @@ Find the Average Discount by Segment & Ship Mode
 
 **Result** <br>
 
+|REGION|SUB_CATEGORY|MINIMUM_PROFIT|
+|------|------------|--------------|
+|Central|Binders     |-3701.8928    |
+|Central|Machines    |-1359.992     |
+|Central|Appliances  |-1181.2824    |
+|Central|Supplies    |-786.0144     |
+|Central|Tables      |-566.5625     |
+|Central|Bookcases   |-437.5404     |
+|Central|Furnishings |-427.45       |
+|Central|Chairs      |-350.49       |
+|Central|Storage     |-172.7328     |
+|Central|Phones      |-87.6672      |
+|Central|Accessories |-33.32        |
+|Central|Fasteners   |-3.768        |
+|Central|Art         |0.3094        |
+|Central|Envelopes   |0.5508        |
+|Central|Labels      |0.6786        |
+|Central|Paper       |1.1466        |
+|Central|Copiers     |107.9946      |
 
 
 <br>
@@ -289,6 +353,34 @@ Find the Average Discount by Segment & Ship Mode
          ORDER BY Total_Profit DESC
          ;
 
+**Result** <br>
+
+|ORDER_DATE|TOTAL_PROFIT|
+|----------|------------|
+|2020-10-02|8738.7971   |
+|2021-03-23|6818.6276   |
+|2021-11-17|5895.3981   |
+|2018-09-23|4808.5975   |
+|2020-12-17|4653.9969   |
+|2021-10-22|4539.8266   |
+|2019-11-08|4006.6367   |
+|2019-03-16|3508.0309   |
+|2020-02-02|2753.711    |
+|2020-10-04|2658.3198   |
+|2021-09-02|2600.1853   |
+|2021-01-16|2595.203    |
+|2021-10-13|2553.2419   |
+|2018-11-04|2443.392    |
+|2020-04-16|2434.1032   |
+|2021-04-08|2276.8183   |
+|2020-03-01|2267.4251   |
+|2021-08-21|2245.6488   |
+|2018-12-14|2220.5215   |
+
+
+<br>
+<br>    
+
  **Exercise 11**  
  --------------
  For the Central Region, which Products had an average profit less than -400?  
@@ -308,6 +400,21 @@ Find the Average Discount by Segment & Ship Mode
 
 **Result** <br>
 
+|REGION|PRODUCT_ID|AVG_PROFIT     |
+|------|----------|---------------|
+|Central|OFF-BI-10004995|-1016.205866667|
+|Central|OFF-SU-10000151|-786.0144      |
+|Central|OFF-BI-10004584|-573.5037      |
+|Central|FUR-TA-10004289|-566.5625      |
+|Central|FUR-TA-10004256|-538.446       |
+|Central|FUR-TA-10002645|-525.6405      |
+|Central|OFF-BI-10003925|-512.1468      |
+|Central|OFF-BI-10003527|-508.396       |
+|Central|OFF-AP-10000828|-470.548       |
+|Central|OFF-AP-10002651|-464.69565     |
+|Central|OFF-AP-10002534|-459.6072      |
+|Central|OFF-AP-10002518|-453.849       |
+|Central|FUR-FU-10001468|-427.45        |
 
 
 <br>
@@ -334,6 +441,10 @@ Find the Average Discount by Segment & Ship Mode
 
 **Result** <br>
 
+|RETURN_STATUS|TOTAL_SALES|TOTAL_ITEMCOUNTS|
+|-------------|-----------|----------------|
+|Returned     |6436.816   |45              |
+|Not returned |87833.148  |372             |
 
 
 <br>
@@ -364,6 +475,18 @@ Find the Average Discount by Segment & Ship Mode
 
 **Result** <br>
 
+|ORDER_ID|RETURN_STATUS|ORDER_VALUES   |TOTAL_PROFIT    |
+|--------|-------------|---------------|----------------|
+|CA-2021-125451|Not returned |4              |-76.0728        |
+|CA-2019-104346|Not returned |4              |-365.9028       |
+|US-2021-162558|Not returned |4              |-993.9581       |
+|CA-2020-157749|Not returned |4              |-484.747        |
+|CA-2021-117457|Not returned |3              |-99.9527        |
+|US-2021-142573|Not returned |3              |-481.6947       |
+|CA-2019-131338|Not returned |3              |-131.82         |
+|CA-2019-167010|Not returned |3              |-277.492        |
+|CA-2019-142237|Not returned |3              |-33.4662        |
+|US-2018-148838|Not returned |3              |-1124.0239      |
 
 
 <br>
@@ -387,14 +510,6 @@ Find the Average Discount by Segment & Ship Mode
          ON S.ORDER_ID = R.ORDER_ID
          ;
 
-**Result** <br>
-
-
-
-<br>
-<br>
-
-
   Note Inner join resulted in 3226 records. Matching records on both tables based on ORDER_ID.
 
 
@@ -405,15 +520,7 @@ Find the Average Discount by Segment & Ship Mode
          ON S.ORDER_ID = R.ORDER_ID
          ;
 
-**Result** <br>
-
-
-
-<br>
-<br>
-
-
-  Note: Left join resulted in 12420 records. Matching records from RETURNED_ORDERS table and all records FROM SUPERSTORE table based on ORDER_ID.
+Note: Left join resulted in 12420 records. Matching records from RETURNED_ORDERS table and all records FROM SUPERSTORE table based on ORDER_ID.
 
 
  --Right Join
@@ -424,18 +531,10 @@ Find the Average Discount by Segment & Ship Mode
          ON S.ORDER_ID = R.ORDER_ID
          ;
 
-**Result** <br>
-
-
+Note: Right join resulted in 3226 records. Matching records from SUPERSTORE table and all records FROM RETURNED_ORDERS table based on ORDER_ID. The result of the INNER and RIGHT join is the same because all the records from the RETURNED_ORDERS matched with the SUPERSTORE table.
 
 <br>
 <br>
-
-
- Note: Right join resulted in 3226 records. Matching records from SUPERSTORE table and all records FROM RETURNED_ORDERS table based on ORDER_ID.  
- The result of the INNER and RIGHT join is the same because all the records from the RETURNED_ORDERS matched with the SUPERSTORE table.
-
-
 
 **Exercise 15 PART 1**  
 --------------
@@ -452,7 +551,9 @@ Join CUSTOMERS to CUSTOMER_SALES_REP
 
 **Result** <br>
 
-
+|NUMBER_OF_CUSTOMER|
+|------------------|
+|178               |
 
 <br>
 <br>
@@ -476,6 +577,10 @@ Join CUSTOMERS to CUSTOMER_SALES_REP
 
 **Result** <br>
 
+|SALES_REPS|NUMBER_OF_CUSTOMER|
+|----------|------------------|
+|Sales Rep |615               |
+|No Sales Rep|178               |
 
 
 <br>
@@ -500,15 +605,18 @@ Add to your query from Part 2:
 
 **Result** <br>
 
+|SALES_REPS|NUMBER_OF_CUSTOMER|
+|----------|------------------|
+|Sales Rep |615               |
 
 
 <br>
 <br>
 
 
---Notes: As we included the Order tables the count of customer decreases and was limited to only those with Sales Rep.
-        -- This number changed because only matched records were included i.e. all the customer with active orders had Sales Rep
-
+Notes: As we included the Order tables the count of customer decreases and was limited to only those with Sales Rep. This number changed because only matched records were included i.e. all the customer with active orders had Sales Rep
+<br>
+<br>
 
 **Exercise 16**  
 --------------
@@ -516,7 +624,8 @@ Join ORDERS to PRODUCTS
         --To find how many times each product was sold in each Year.  
         --Sort so we can see the best selling product for a given Year.  
         --HINT: In Snowflake YEAR(“date”) is a function.  
-        --Remember to Alias.  
+        --Remember to Alias. 
+        --Limit to 10  
 
             SELECT YEAR(L.ORDER_DATE) AS Year,
                 L.PRODUCT_ID,
@@ -526,10 +635,23 @@ Join ORDERS to PRODUCTS
                 ON L.PRODUCT_ID = R.PRODUCT_ID
             GROUP BY Year, L.PRODUCT_ID
             ORDER BY TimesProductSold DESC
+            Limit 10
             ;
 
 **Result** <br>
 
+|YEAR|PRODUCT_ID|TIMESPRODUCTSOLD|
+|----|----------|----------------|
+|2020|FUR-TA-10001095|9               |
+|2020|TEC-AC-10003832|8               |
+|2021|FUR-CH-10003774|8               |
+|2020|FUR-FU-10004864|8               |
+|2021|TEC-AC-10004510|7               |
+|2021|OFF-ST-10003208|7               |
+|2020|OFF-BI-10004236|7               |
+|2021|OFF-PA-10001970|7               |
+|2021|OFF-ST-10001325|7               |
+|2021|OFF-BI-10004632|7               |
 
 
 <br>
@@ -560,6 +682,9 @@ Using Superstore_Orders table
 
 **Result** <br>
 
+|NUMBEROFREGION|
+|--------------|
+|2             |
 
 
 <br>
