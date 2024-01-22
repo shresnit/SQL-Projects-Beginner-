@@ -53,7 +53,7 @@ The first task is setting some context for later weeks by understanding how popu
     Limit 10       -- Limiting to 10 records as the result table is large to display
     ;
 
-**Result 1**
+**Result 1** (*The result is limited to 10 records*)
 |DATE_|FLIGHT_NUMBER|FROM_   |TO_     |CLASS          |PRICE  |FLOW_CARD_STR|BAGS_CHECKED|MEAL_TYPE |
 |-----|-------------|--------|--------|---------------|-------|-------------|------------|----------|
 |2024-07-22|PA010        |Tokyo   |New York|Economy        |2380.00|Yes          |0           |Egg Free  |
@@ -99,7 +99,7 @@ The first task is setting some context for later weeks by understanding how popu
         Limit 10        -- Limiting to 10 records as the result table is large to display
         ;
 
-**Result**
+**Result** (*The result is limited to 10 records*)
 |DATE_|FLIGHT_NUMBER|FROM_   |TO_     |CLASS          |PRICE  |FLOW_CARD_STR|BAGS_CHECKED|MEAL_TYPE |
 |-----|-------------|--------|--------|---------------|-------|-------------|------------|----------|
 |2024-09-28|PA008        |Perth   |New York|Economy        |1855.00|No           |2           |Vegetarian|
