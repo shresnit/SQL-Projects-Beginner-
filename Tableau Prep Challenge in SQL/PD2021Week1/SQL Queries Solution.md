@@ -51,7 +51,7 @@ This week we are going to be focusing on cleaning data ready to answer some ques
     Limit 10 --Limiting the table to 10 records as the table is large
     ;
 
-**Result**
+**Result**  (*The result is limited to 10 records*)
 |QUARTER|STORE      |BIKE    |ORDER_ID|CUSTOMER_AGE|BIKE_VALUE|EXISTING_CUSTOMER|DAY_OF_MONTH|
 |-------|-----------|--------|--------|------------|----------|-----------------|------------|
 |4      |Birmingham |Road    |11      |57          |902       |No               |4           |
