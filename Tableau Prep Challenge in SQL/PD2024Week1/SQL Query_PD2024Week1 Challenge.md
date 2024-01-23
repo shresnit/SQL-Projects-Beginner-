@@ -1,146 +1,122 @@
-**2023: Week 2 - International Bank Account Numbers**
+**2024: Week 1 - Prep Air's Flow Card**
 -------------------
 
-January 11, 2023  
-Challenge By: Jenny Martin
+January 03, 2024  
+Challenge by: Carl Allchin
 
-For week 2 of our beginner month, Data Source Bank has a requirement to construct International Bank Account Numbers (IBANs), even for Transactions taking place in the UK. We have all the information in separate fields, we just need to put it altogether in the following order:
+At Preppin' Data we use a number of (mock) companies to look at the challenges they have with their data. For January, we're going to focus on our own airline, Prep Air. The airline has introduced a new loyalty card called the Flow Card. We need to clean up a number of data sets to determine how well the card is doing. 
 
-![image](https://github.com/shresnit/SQL-Projects/assets/100710335/fd6262f3-a090-4948-a666-af2a2d861016)
+The first task is setting some context for later weeks by understanding how popular the Flow Card is. Our stakeholder would like two data sets about our passengers. One data set for card users and one data set for those who don't use the card. 
 
 
 **Requirements**
-- In the Transactions table, there is a Sort Code field which contains dashes. We need to remove these so just have a 6 digit string
-- Use the SWIFT Bank Code lookup table to bring in additional information about the SWIFT code and Check Digits of the receiving bank account
-- Add a field for the Country Code
-  - Hint: all these transactions take place in the UK so the Country Code should be GB
-- Create the IBAN as above 
-  - Hint: watch out for trying to combine sting fields with numeric fields - check data types
-- Remove unnecessary fields 
-- Output the data
+- Input the data
+- Split the Flight Details field to form:
+  - Date 
+  - Flight Number
+  - From
+  - To
+  - Class
+  - Price
+- Convert the following data fields to the correct data types:
+  - Date to a date format
+  - Price to a decimal value
+- Change the Flow Card field to Yes / No values instead of 1 / 0
+- Create two tables, one for Flow Card holders and one for non-Flow Card holders
+- Output the data sets
 *The data source is in the PD2023Week1 folder*
   <br>
   <br>
 
-**SQL Solution** (*In Snowflake*)
+**SQL Solution** (*In Snowflake*)  
+Flow Card Holders
          
-          SELECT T.TRANSACTION_ID,
-                  CONCAT('GB' ||
-                          S.CHECK_DIGITS ||
-                          S.SWIFT_CODE ||
-                          regexp_replace(T.sort_code, '-', '') ||
-                          T.ACCOUNT_NUMBER
-                          ) AS IBAN
-          FROM PD2023_WK02_TRANSACTIONS AS T
-          INNER JOIN PD2023_WK02_SWIFT_CODES AS S
-              ON T.BANK = S.BANK
-          ;
+    WITH 
+    Table1 AS
+        (SELECT split_part(FLIGHT_DETAILS, '//', 1) AS Date_,
+            split_part(FLIGHT_DETAILS, '//', 2) AS Flight_Number,
+            split_part(FLIGHT_DETAILS, '//', 3) AS From_,
+            split_part(FLIGHT_DETAILS, '//', 4) AS Class,
+            split_part(FLIGHT_DETAILS, '//', 5) AS Price,
+            FLOW_CARD,
+            BAGS_CHECKED,
+            MEAL_TYPE
+        FROM PD2024W1
+        )
+      
+    SELECT DATE_,
+        FLIGHT_NUMBER,
+        split_part(FROM_, '-', 1) AS FROM_,
+        split_part(FROM_, '-', 2) AS TO_,
+        CLASS,
+        ROUND(PRICE,2) AS PRICE,
+        CASE FLOW_CARD WHEN 1 THEN 'Yes' WHEN 0 THEN 'No' END AS FLOW_CARD_STR,
+        BAGS_CHECKED,
+        MEAL_TYPE 
+    FROM Table1
+    WHERE FLOW_CARD_STR = 'Yes'
+    Limit 10 - --Limiting the table to 10 records as the table is large
+    ;
   
-
 **Result 1** (*The result is limited to 10 records*)
-|TRANSACTION_ID|IBAN                  |
-|--------------|----------------------|
-|3888          |GB12DSBX95988262230725|
-|7423          |GB22HLFX49312675616805|
-|3286          |GB22HLFX21853047326725|
-|6764          |GB12DSBX29723910570182|
-|2021          |GBC1LOYD59175172261023|
-|9373          |GB4BHBUK24151244568613|
-|7983          |GB2LNWBK67189758775796|
-|8813          |GBC1LOYD63589183475180|
-|3270          |GB2LNWBK16710742126094|
-|2868          |GB4BHBUK81899653579089|
-|9195          |GB22BARC29369996432979|
-|2797          |GB22HLFX36632147474979|
-|9096          |GB4BHBUK74259532710603|
-|7485          |GBC1LOYD63461763007765|
-|2340          |GB4BHBUK95741982753835|
-|7268          |GB2LNWBK88752496412639|
-|8629          |GB2LNWBK65358083955552|
-|9530          |GB12DSBX70700574379515|
-|2953          |GB22BARC16157480259094|
-|1062          |GB22BARC75189450400945|
-|9224          |GB4BHBUK58346132950330|
-|2760          |GB12DSBX28066085744933|
-|3598          |GB2LNWBK93263053420865|
-|6999          |GB2LNWBK79647546226858|
-|5834          |GB2LNWBK73789035061906|
-|7665          |GB22BARC97774786932953|
-|8808          |GB4BHBUK97038541599267|
-|3770          |GB12DSBX32549026013637|
-|1281          |GB2LNWBK42252795862106|
-|5773          |GBC1LOYD43861382021377|
-|4653          |GB22HLFX98290826844967|
-|1215          |GB22BARC86447625328896|
-|1614          |GB22HLFX69112538668066|
-|6054          |GBC1LOYD96885447199472|
-|8500          |GBC1LOYD87493846967961|
-|5955          |GBC1LOYD97849671124764|
-|7081          |GB4BHBUK99836025862478|
-|2354          |GB22BARC23881843602961|
-|9760          |GB4BHBUK90535525504883|
-|8864          |GB3EABBY43622091658439|
-|1716          |GB3EABBY68363652310258|
-|8453          |GBC1LOYD64945830335066|
-|3600          |GB22HLFX33530821348995|
-|6155          |GB4BHBUK24815290692776|
-|1730          |GB22BARC49536476275760|
-|4063          |GB12DSBX28178620220923|
-|2570          |GB22BARC20766392497278|
-|4856          |GB4BHBUK74721138183636|
-|2031          |GB3EABBY73485061059913|
-|2902          |GB4BHBUK67357062609049|
-|9415          |GB3EABBY44478144418182|
-|9307          |GB2LNWBK34762822610455|
-|7809          |GB2LNWBK19611433725878|
-|9137          |GB12DSBX41316078873999|
-|4102          |GB22HLFX59660150508460|
-|4251          |GB22HLFX64482127270504|
-|4756          |GB3EABBY26638594377199|
-|6933          |GB3EABBY41192656478271|
-|4060          |GB2LNWBK58372337658820|
-|4859          |GB4BHBUK66307466763721|
-|2882          |GB4BHBUK43474072954282|
-|1952          |GB12DSBX21275453786334|
-|7353          |GB22HLFX13766021915880|
-|4580          |GB22HLFX24729957383660|
-|1327          |GB3EABBY25318860934362|
-|8403          |GB2LNWBK29270985946847|
-|1126          |GBC1LOYD45825569969270|
-|3890          |GB3EABBY70037475951736|
-|5778          |GB3EABBY75783470255646|
-|7066          |GB3EABBY54100385919526|
-|9181          |GB22BARC96924067860804|
-|6948          |GB22HLFX16586513213297|
-|9992          |GB4BHBUK71694010170574|
-|1673          |GB22HLFX92575259488515|
-|5042          |GB4BHBUK23914453092685|
-|3892          |GB3EABBY23651853393048|
-|3279          |GB4BHBUK34843258721386|
-|1572          |GB4BHBUK88532572219605|
-|8110          |GB3EABBY65905240072077|
-|8664          |GB3EABBY21090451052559|
-|5644          |GB22BARC21841777656886|
-|1493          |GB12DSBX86544212193988|
-|2774          |GB4BHBUK57548710519002|
-|1314          |GB12DSBX61857971210735|
-|1425          |GB4BHBUK74789296930299|
-|7778          |GB22BARC55073838687214|
-|4870          |GBC1LOYD51074179724968|
-|6400          |GB3EABBY80436238383736|
-|3959          |GB22BARC35598782773607|
-|7086          |GB12DSBX59774456630552|
-|1298          |GB3EABBY42635630601237|
-|5574          |GB22HLFX10019840722610|
-|1671          |GB4BHBUK19554477144031|
-|9741          |GB4BHBUK56593943638730|
-|1245          |GB4BHBUK50846668373125|
-|4656          |GB22BARC79827460830548|
-|2535          |GB22BARC57143268745993|
-|9013          |GB2LNWBK93877113350031|
-|5404          |GB22BARC53282134302539|
-|4746          |GB22BARC42863883172326|
+|DATE_|FLIGHT_NUMBER         |FROM_   |TO_     |CLASS          |PRICE  |FLOW_CARD_STR|BAGS_CHECKED|MEAL_TYPE |
+|-----|----------------------|--------|--------|---------------|-------|-------------|------------|----------|
+|2024-07-22|PA010                 |Tokyo   |New York|Economy        |2380.00|Yes          |0           |Egg Free  |
+|2024-04-20|PA002                 |New York|London  |Economy        |3490.00|Yes          |1           |Vegan     |
+|2024-01-23|PA010                 |Tokyo   |New York|Premium Economy|825.00 |Yes          |1           |Vegetarian|
+|2024-06-05|PA006                 |Tokyo   |London  |First Class    |618.00 |Yes          |3           |Vegan     |
+|2024-03-30|PA004                 |Perth   |London  |First Class    |446.00 |Yes          |1           |Nut Free  |
+|2024-06-14|PA006                 |Tokyo   |London  |Premium Economy|1062.50|Yes          |3           |Egg Free  |
+|2024-07-15|PA006                 |Tokyo   |London  |First Class    |499.00 |Yes          |1           |Egg Free  |
+|2024-02-25|PA004                 |Perth   |London  |Premium Economy|827.50 |Yes          |0           |Vegetarian|
+|2024-07-26|PA004                 |Perth   |London  |Economy        |2245.00|Yes          |1           |Vegan     |
+|2024-12-10|PA004                 |Perth   |London  |Business Class |391.20 |Yes          |2           |Vegetarian|
+
 
 <br>
 <br>
 
+**Non Flow Card Holders**
+
+    WITH 
+    Table1 AS
+        (SELECT split_part(FLIGHT_DETAILS, '//', 1) AS Date_,
+            split_part(FLIGHT_DETAILS, '//', 2) AS Flight_Number,
+            split_part(FLIGHT_DETAILS, '//', 3) AS From_,
+            split_part(FLIGHT_DETAILS, '//', 4) AS Class,
+            split_part(FLIGHT_DETAILS, '//', 5) AS Price,
+            FLOW_CARD,
+            BAGS_CHECKED,
+            MEAL_TYPE
+        FROM PD2024W1
+        )
+      
+    SELECT DATE_,
+        FLIGHT_NUMBER,
+        split_part(FROM_, '-', 1) AS FROM_,
+        split_part(FROM_, '-', 2) AS TO_,
+        CLASS,
+        ROUND(PRICE,2) AS PRICE,
+        CASE FLOW_CARD WHEN 1 THEN 'Yes' WHEN 0 THEN 'No' END AS FLOW_CARD_STR,
+        BAGS_CHECKED,
+        MEAL_TYPE 
+    FROM Table1
+    WHERE FLOW_CARD_STR = 'No'
+    Limit 10
+    ;
+
+**Result 2**  (*The result is limited to 10 records*)
+|DATE_|FLIGHT_NUMBER         |FROM_   |TO_     |CLASS          |PRICE  |FLOW_CARD_STR|BAGS_CHECKED|MEAL_TYPE |
+|-----|----------------------|--------|--------|---------------|-------|-------------|------------|----------|
+|2024-09-28|PA008                 |Perth   |New York|Economy        |1855.00|No           |2           |Vegetarian|
+|2024-10-01|PA008                 |Perth   |New York|Business Class |634.80 |No           |0           |Vegetarian|
+|2024-03-04|PA007                 |New York|Perth   |Business Class |458.40 |No           |3           |Nut Free  |
+|2024-02-25|PA010                 |Tokyo   |New York|Premium Economy|1435.00|No           |0           |None      |
+|2024-03-29|PA004                 |Perth   |London  |Economy        |2730.00|No           |2           |Vegan     |
+|2024-06-07|PA005                 |London  |Tokyo   |Business Class |294.00 |No           |2           |Egg Free  |
+|2024-06-30|PA009                 |New York|Tokyo   |First Class    |236.00 |No           |1           |Vegetarian|
+|2024-08-12|PA011                 |Perth   |Tokyo   |Economy        |2570.00|No           |2           |Vegan     |
+|2024-11-05|PA010                 |Tokyo   |New York|First Class    |397.00 |No           |2           |None      |
+|2024-03-19|PA003                 |London  |Perth   |First Class    |585.00 |No           |2           |Egg Free  |
+
+<br>
