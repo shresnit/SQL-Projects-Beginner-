@@ -8,6 +8,9 @@ This is our next challenge from one of the members of the 38th cohort of the Dat
 
 You have been hired to create a dataset for the Prep School that will allow them to analyse the correlation between attendance and test scores.  
 
+PD Challenge: https://preppindata.blogspot.com/2023/05/2023-week-22-student-attendance-vs-test.html
+
+
 Student Test Scores
 <br>
 
